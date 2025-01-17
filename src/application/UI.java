@@ -1,13 +1,30 @@
 package application;
 
 import chess.ChessPiece;
+import chess.ChessPosition;
 import chess.Color;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class UI {
 
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_YELLOW = "\u001B[33m";
     //public static final String ANSI_WHITE = "\u001B[37m";
+
+    public static ChessPosition readChessPosition(Scanner scanner) {
+        try {
+            String line = scanner.nextLine();
+            char column = line.charAt(0);
+            int row = Integer.parseInt(line.substring(1));
+
+            return new ChessPosition(column, row);
+        } catch (RuntimeException e) {
+            throw new InputMismatchException("Error reading chess position. Valid values are a1 to h8");
+        }
+
+    }
 
     public static void printBoard(ChessPiece[][] pieces) {
         for (int i = 0; i < pieces.length; i++) {
