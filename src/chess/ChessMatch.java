@@ -33,6 +33,13 @@ public class ChessMatch {
         placeNewPiece('e', 1, new King(board, Color.WHITE));
     }
 
+    public boolean[][] possibleMoves(ChessPosition origin) {
+        Position position = origin.toPosition();
+        validateOrigin(position);
+
+        return board.piece(position).possibleMoves();
+    }
+
     public ChessPiece performChessMove(ChessPosition origin, ChessPosition destination) {
         Position originPosition = origin.toPosition();
         Position targetPosition = destination.toPosition();
