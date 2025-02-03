@@ -12,9 +12,13 @@ public class Pawn extends ChessPiece {
     }
 
     @Override
+    public String toString() {
+        return "P";
+    }
+
+    @Override
     public boolean[][] possibleMoves() {
         boolean[][] possibleMoves = new boolean[getBoard().getRows()][getBoard().getColumns()];
-
         Position aux = new Position(0, 0);
 
         if (getColor() == Color.WHITE) {
@@ -60,10 +64,5 @@ public class Pawn extends ChessPiece {
         }
 
         return possibleMoves;
-    }
-
-    @Override
-    public String toString() {
-        return "P";
     }
 }
